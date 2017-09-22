@@ -37,11 +37,11 @@ When you running the code, the pre-train model will be store in folder ``ckpts``
 $ python Main.py --resD=True --model=leakgan_preD
 ``` 
 
-if you want to restore all pre-traine model or unsupervised model (store model every 30 epoch), you can run:
+if you want to restore all pre-traine model or unsupervised model (store model every 30 epoch named ``leakgan-31`` or other number), you can run:
 ```
 $ python Main.py --restore=True --model=leakgan_pre
 ``` 
-(leakgan_1)
 
-After running the experiments, you could get the negative log-likelihodd performance printed in the console like:
+After running the experiments, you can run the ``convert.py`` to obtain the real sentence in folder ``speech``.You also can run the ``eval_bleu.py`` to acquire the BLEU score in your command line.
+The generated examples store in folder ``save`` every 30 epochs, and the file named ``coco_31.txt`` or other numbers.
 
