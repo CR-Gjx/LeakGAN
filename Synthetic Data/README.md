@@ -14,8 +14,8 @@ LeakGANModel.py : The generator model of LeakGAN including Manager and Worker.
 
 Discriminator.py: The discriminator model of LeakGAN including Feature Extractor and classification.
 
-target_lstm.py : The oracle model for length 20.
-target_lstm40.py : The oracle model for length 40.
+target_lstm.py : The oracle model for length 40.
+target_lstm20.py : The oracle model for length 20.
 
 data_loader.py: Data helpy function for this experiment.
 
