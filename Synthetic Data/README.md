@@ -6,35 +6,45 @@
 * CUDA 7.5+ (For GPU)
 
 ## Introduction
-Apply Generative Adversarial Nets and Hierarchical Reinforcement Learning to generating sequences of discrete tokens using leaked information from D.
+This is the synthetic data experiment of LeakGAN.
 
 ## File
 
-LeakGAN40.py : The main file for length 40.
-LeakGAN20.py : The main file for length 20.
+LeakGANModel.py : The generator model of LeakGAN including Manager and Worker.
 
-Model.py: Our model.
+Discriminator.py: The discriminator model of LeakGAN including Feature Extractor and classification.
 
-target_lstm20.py : The oracle model for length 20.
+target_lstm.py : The oracle model for length 20.
 target_lstm40.py : The oracle model for length 40.
 
-data_loader20.py: Data helpy function for length 20.
-data_loader40.py: Data helpy function for length 40.
+data_loader.py: Data helpy function for this experiment.
+
+Main.py: The Main function of this experiment.
 
 ## Details 
 We provide example codes to repeat the synthetic data experiments with oracle evaluation mechanisms in length 20 and 40.
 To run the experiment with default parameters for length 20:
 ```
-$ python LeakGAN.py
+$ python Main.py
 ```
 
-To run the experiment with default parameters for length 20:
+To run the experiment with default parameters for length 40:
 ```
-$ python LeakGAN40.py
+$ python Main.py --length=40
 ```
 
 In our code, we
 The experiment has two stages. In the first stage, use the positive data provided by the oracle and Maximum Likelihood Estimation to perform supervise learning. In the second stage, use adversarial training to improve the generator.
+
+When you running the code, the pre-train model will be store in folder ``ckpts``, if you want to restore the pre-trained discriminator model, you can run:
+```
+$ python Main.py --resD=True --model=leakgan_preD
+``` 
+
+if you want to restore all pre-trained model, you can run:
+```
+$ python Main.py --restore=True --model=leakgan_pre
+``` 
 
 After running the experiments, you could get the negative log-likelihodd performance printed in the console like:
 ```
@@ -210,285 +220,186 @@ total_batch:  95 test_loss:  7.35818
 
 
 #### Length 20:
-pre-train epoch  0 test_loss  9.79046
-pre-train epoch  5 test_loss  9.23233
-pre-train epoch  10 test_loss  9.01165
-pre-train epoch  15 test_loss  8.55405
-pre-train epoch  20 test_loss  8.37889
-pre-train epoch  25 test_loss  8.25284
-pre-train epoch  30 test_loss  8.26965
-pre-train epoch  35 test_loss  8.2791
-pre-train epoch  40 test_loss  8.25489
-pre-train epoch  45 test_loss  8.24959
-pre-train epoch  50 test_loss  8.2421
-pre-train epoch  55 test_loss  8.27822
-pre-train epoch  60 test_loss  8.29729
-pre-train epoch  65 test_loss  8.33883
-pre-train epoch  70 test_loss  8.35861
-pre-train epoch  75 test_loss  8.37023
-pre-train epoch  80 test_loss  8.36275
-pre-train epoch  85 test_loss  8.35861
-pre-train epoch  90 test_loss  8.34861
-pre-train epoch  95 test_loss  8.35861
-pre-train epoch  100 test_loss  8.35861
-pre-train epoch  105 test_loss  8.33861
-pre-train epoch  110 test_loss  8.34861
-pre-train epoch  115 test_loss  8.35861
+pre-train epoch  0 test_loss  9.69433
+Groud-Truth: 5.75101
+pre-train epoch  5 test_loss  9.03316
+Groud-Truth: 5.75479
+Start pre-training...
+pre-train epoch  0 test_loss  8.58167
+Groud-Truth: 5.75434
+pre-train epoch  5 test_loss  8.21973
+Groud-Truth: 5.7579
+Start pre-training...
+pre-train epoch  0 test_loss  8.13603
+Groud-Truth: 5.75325
+pre-train epoch  5 test_loss  8.15756
+Groud-Truth: 5.74576
+Start pre-training...
+pre-train epoch  0 test_loss  8.17478
+Groud-Truth: 5.75582
+pre-train epoch  5 test_loss  8.16642
+Groud-Truth: 5.75338
+Start pre-training...
+pre-train epoch  0 test_loss  8.15797
+Groud-Truth: 5.7517
+pre-train epoch  5 test_loss  8.2205
+Groud-Truth: 5.75411
+Start pre-training...
+pre-train epoch  0 test_loss  8.19299
+Groud-Truth: 5.74077
+pre-train epoch  5 test_loss  8.23519
+Groud-Truth: 5.75896
+Start pre-training...
+pre-train epoch  0 test_loss  8.23879
+Groud-Truth: 5.7437
+pre-train epoch  5 test_loss  8.28305
+Groud-Truth: 5.74944
+Start pre-training...
+pre-train epoch  0 test_loss  8.29373
+Groud-Truth: 5.74839
+pre-train epoch  5 test_loss  8.31093
+Groud-Truth: 5.74664
+Start pre-training...
+pre-train epoch  0 test_loss  8.27784
+Groud-Truth: 5.76347
+pre-train epoch  5 test_loss  8.30236
+Groud-Truth: 5.75073
+Start pre-training...
+pre-train epoch  0 test_loss  8.35919
+Groud-Truth: 5.74792
+pre-train epoch  5 test_loss  8.34681
+Groud-Truth: 5.74609
 #########################################################################
-total_batch:  0 test_loss:  8.32261
-target: -0.00115139
-Groud-Truth: 5.76903
-0
-total_batch:  1    -0.0748189    2.65353
-1
-total_batch:  2    -0.0733639    2.59667
-1
-total_batch:  3    -0.0750953    2.63402
-2
-total_batch:  4    -0.072135    2.55991
-2
-total_batch:  5    -0.0711216    2.5347
-total_batch:  5 test_loss:  8.06178
-Groud-Truth: 5.74315
-3
-total_batch:  6    -0.0694847    2.51656
-3
-total_batch:  7    -0.0692976    2.41641
-4
-total_batch:  8    -0.0708733    2.49223
-4
-total_batch:  9    -0.0702165    2.36559
-5
-total_batch:  10    -0.0672321    2.32977
-total_batch:  10 test_loss:  7.91655
-Groud-Truth: 5.75286
-5
-total_batch:  11    -0.0681583    2.41653
-6
-total_batch:  12    -0.0654267    2.34092
-6
-total_batch:  13    -0.0687298    2.33515
-7
-total_batch:  14    -0.0682873    2.25028
-7
-total_batch:  15    -0.0663429    2.22504
-total_batch:  15 test_loss:  7.79723
-Groud-Truth: 5.75233
-8
-total_batch:  16    -0.0650572    2.21478
-8
-total_batch:  17    -0.0671644    2.16018
-9
-total_batch:  18    -0.0652224    2.1117
-9
-total_batch:  19    -0.0641908    2.02485
-10
-total_batch:  20    -0.0614942    1.92095
-total_batch:  20 test_loss:  7.44647
-Groud-Truth: 5.75483
-10
-total_batch:  21    -0.0599244    1.92014
-11
-total_batch:  22    -0.0557595    1.82898
-11
-total_batch:  23    -0.0582773    1.78447
-12
-total_batch:  24    -0.0548887    1.70569
-12
-total_batch:  25    -0.0596043    1.91641
-total_batch:  25 test_loss:  7.37603
-Groud-Truth: 5.74729
-13
-total_batch:  26    -0.0565431    1.84316
-13
-total_batch:  27    -0.0580525    1.80003
-14
-total_batch:  28    -0.0555371    1.73949
-14
-total_batch:  29    -0.0560679    1.84264
-15
-total_batch:  30    -0.0570525    1.71439
-en: -0.00112237
-total_batch:  30 test_loss:  7.23705
-target: -0.00115106
-Groud-Truth: 5.75674
-15
-total_batch:  31    -0.059762    1.78002
-16
-total_batch:  32    -0.0528225    1.68505
-16
-total_batch:  33    -0.053743    1.72411
-17
-total_batch:  34    -0.0586561    1.73525
-17
-total_batch:  35    -0.053348    1.73746
-total_batch:  35 test_loss:  7.17774
-Groud-Truth: 5.75209
-18
-total_batch:  36    -0.0545638    1.62786
-18
-total_batch:  37    -0.0557342    1.6338
-19
-total_batch:  38    -0.0539989    1.61291
-19
-total_batch:  39    -0.0557821    1.57712
-20
-total_batch:  40    -0.0531582    1.62076
-total_batch:  40 test_loss:  7.08687
-Groud-Truth: 5.7461
-20
-total_batch:  41    -0.0558011    1.64124
-21
-total_batch:  42    -0.0518572    1.56386
-21
-total_batch:  43    -0.051937    1.55573
-22
-total_batch:  44    -0.0560074    1.6642
-22
-total_batch:  45    -0.0480089    1.55876
-total_batch:  45 test_loss:  7.10859
-Groud-Truth: 5.75255
-23
-total_batch:  46    -0.0496448    1.56284
-23
-total_batch:  47    -0.0507183    1.61702
-24
-total_batch:  48    -0.0493574    1.57254
-24
-total_batch:  49    -0.0485481    1.55289
-25
-total_batch:  50    -0.0494223    1.49561
-total_batch:  50 test_loss:  7.11554
-Groud-Truth: 5.76044
-25
-total_batch:  51    -0.0501754    1.57039
-26
-total_batch:  52    -0.0482378    1.55509
-26
-total_batch:  53    -0.0476559    1.60568
-27
-total_batch:  54    -0.052231    1.49869
-27
-total_batch:  55    -0.0460759    1.50756
-en: -0.00112776
-total_batch:  55 test_loss:  7.0391
-target: -0.00115031
-Groud-Truth: 5.73975
-28
-total_batch:  56    -0.0489183    1.41079
-28
-total_batch:  57    -0.046071    1.39837
-29
-total_batch:  58    -0.0470096    1.45003
-29
-total_batch:  59    -0.0483027    1.60029
-30
-total_batch:  60    -0.0484383    1.56495
-total_batch:  60 test_loss:  7.08765
-Groud-Truth: 5.75295
-30
-total_batch:  61    -0.0511004    1.55408
-31
-total_batch:  62    -0.0459844    1.51821
-31
-total_batch:  63    -0.0430586    1.43311
-32
-total_batch:  64    -0.0477675    1.53567
-32
-total_batch:  65    -0.0446857    1.47013
-en: -0.00113196
-total_batch:  65 test_loss:  7.13849
-target: -0.00115119
-Groud-Truth: 5.75425
-33
-total_batch:  66    -0.0511859    1.58795
-33
-total_batch:  67    -0.0499813    1.58719
-34
-total_batch:  68    -0.0470622    1.54053
-34
-total_batch:  69    -0.0456274    1.50734
-35
-total_batch:  70    -0.0460732    1.41583
-total_batch:  70 test_loss:  6.97844
-Groud-Truth: 5.75092
-35
-total_batch:  71    -0.0465902    1.50938
-36
-total_batch:  72    -0.0411174    1.50827
-36
-total_batch:  73    -0.0461697    1.41665
-37
-total_batch:  74    -0.0443668    1.41308
-37
-total_batch:  75    -0.0454291    1.6019
-total_batch:  75 test_loss:  7.07213
-Groud-Truth: 5.75355
-38
-total_batch:  76    -0.0387431    1.56111
-38
-total_batch:  77    -0.041546    1.44214
-39
-total_batch:  78    -0.0418215    1.47762
-39
-total_batch:  79    -0.0378464    1.41147
-40
-total_batch:  80    -0.0417305    1.51489
-total_batch:  80 test_loss:  6.94508
-Groud-Truth: 5.75176
-40
-total_batch:  81    -0.0456369    1.49778
-41
-total_batch:  82    -0.0346479    1.45052
-41
-total_batch:  83    -0.033707    1.47873
-42
-total_batch:  84    -0.039991    1.45967
-42
-total_batch:  85    -0.0361866    1.45741
-en: -0.00114029
-total_batch:  85 test_loss:  7.24787
-target: -0.00115056
-Groud-Truth: 5.75004
-43
-total_batch:  86    -0.0416327    1.44945
-43
-total_batch:  87    -0.0391876    1.46167
-44
-total_batch:  88    -0.0341999    1.52573
-44
-total_batch:  89    -0.0383887    1.54944
-45
-total_batch:  90    -0.0362922    1.44933
-total_batch:  90 test_loss:  7.1182
-Groud-Truth: 5.74758
-45
-total_batch:  91    -0.0361173    1.48233
-46
-total_batch:  92    -0.0345551    1.57137
-46
-total_batch:  93    -0.0420464    1.56493
-47
-total_batch:  94    -0.039561    1.54575
-47
-total_batch:  95    -0.0356424    1.61081
-total_batch:  95 test_loss:  7.36414
-Groud-Truth: 5.74691
-48
-total_batch:  96    -0.0273507    1.54172
-48
-total_batch:  97    -0.0357092    1.5455
-49
-total_batch:  98    -0.033188    1.56247
-49
-total_batch:  99    -0.0375338    1.59204
-50
-total_batch:  100    -0.0322227    1.58326
-total_batch:  100 test_loss:  7.22594
-Groud-Truth: 5.75549
-50
-total_batch:  101    -0.0329372    1.42671
-51
-total_batch:  102    -0.0322859    1.48235
+Start Adversarial Training...
+total_batch:  0    -0.0786467    2.6426
+total_batch:  0 test_loss:  8.24163
+Groud-Truth: 5.75979
+total_batch:  1    -0.0753347    2.53958
+total_batch:  2    -0.0752082    2.46282
+total_batch:  3    -0.0743724    2.37566
+total_batch:  4    -0.0738771    2.36256
+total_batch:  5    -0.0723427    2.27869
+total_batch:  5 test_loss:  7.8844
+Groud-Truth: 5.74654
+total_batch:  6    -0.072562    2.35351
+total_batch:  7    -0.0721927    2.30898
+total_batch:  8    -0.06853    2.14714
+total_batch:  9    -0.0674056    2.15058
+total_batch:  10    -0.0660952    2.08341
+total_batch:  10 test_loss:  7.57832
+Groud-Truth: 5.76818
+total_batch:  11    -0.0612625    2.01803
+total_batch:  12    -0.0583717    1.88487
+total_batch:  13    -0.0581408    2.02243
+total_batch:  14    -0.0568922    1.91171
+total_batch:  15    -0.0457503    1.90713
+total_batch:  15 test_loss:  7.42915
+Groud-Truth: 5.74912
+total_batch:  16    -0.0511991    1.87393
+total_batch:  17    -0.0468395    1.79838
+total_batch:  18    -0.0524906    1.65953
+total_batch:  19    -0.0423182    1.6548
+total_batch:  20    -0.0395193    1.67308
+total_batch:  20 test_loss:  7.16191
+Groud-Truth: 5.75412
+total_batch:  21    -0.0489724    1.61477
+total_batch:  22    -0.0514075    1.61549
+total_batch:  23    -0.039316    1.69423
+total_batch:  24    -0.0437855    1.60816
+total_batch:  25    -0.0460445    1.5999
+total_batch:  25 test_loss:  6.93066
+Groud-Truth: 5.76414
+total_batch:  26    -0.0390215    1.53606
+total_batch:  27    -0.0370758    1.49105
+total_batch:  28    -0.040418    1.48834
+total_batch:  29    -0.0370537    1.53179
+total_batch:  30    -0.0400711    1.50991
+total_batch:  30 test_loss:  6.87948
+Groud-Truth: 5.75843
+total_batch:  31    -0.0393979    1.50215
+total_batch:  32    -0.0361043    1.36426
+total_batch:  33    -0.0412544    1.43601
+total_batch:  34    -0.0366505    1.4642
+total_batch:  35    -0.0404557    1.41566
+total_batch:  35 test_loss:  6.75794
+Groud-Truth: 5.75188
+total_batch:  36    -0.0432183    1.45198
+total_batch:  37    -0.0393205    1.40172
+total_batch:  38    -0.0403796    1.29743
+total_batch:  39    -0.0352011    1.49704
+total_batch:  40    -0.0433412    1.46439
+total_batch:  40 test_loss:  6.89491
+Groud-Truth: 5.74032
+total_batch:  41    -0.0399952    1.43648
+total_batch:  42    -0.0421722    1.40709
+total_batch:  43    -0.04585    1.45173
+total_batch:  44    -0.0444828    1.35187
+total_batch:  45    -0.0437096    1.36157
+total_batch:  45 test_loss:  6.71096
+Groud-Truth: 5.75132
+total_batch:  46    -0.0393726    1.42049
+total_batch:  47    -0.0362047    1.30559
+total_batch:  48    -0.0344743    1.32346
+total_batch:  49    -0.038387    1.28226
+total_batch:  50    -0.0374189    1.37834
+total_batch:  50 test_loss:  6.84156
+Groud-Truth: 5.76275
+total_batch:  51    -0.0391664    1.33567
+total_batch:  52    -0.0407602    1.39949
+total_batch:  53    -0.0370343    1.37453
+total_batch:  54    -0.04027    1.32105
+total_batch:  55    -0.0423864    1.40343
+total_batch:  55 test_loss:  6.89914
+Groud-Truth: 5.75197
+total_batch:  56    -0.0392567    1.37611
+total_batch:  57    -0.0432047    1.40969
+total_batch:  58    -0.0450205    1.34412
+total_batch:  59    -0.0330139    1.35893
+total_batch:  60    -0.0356952    1.38876
+total_batch:  60 test_loss:  6.94015
+Groud-Truth: 5.75518
+total_batch:  61    -0.0326097    1.28673
+total_batch:  62    -0.0342327    1.36097
+total_batch:  63    -0.0375812    1.35249
+total_batch:  64    -0.0333246    1.30329
+total_batch:  65    -0.0491887    1.40754
+total_batch:  65 test_loss:  7.04084
+Groud-Truth: 5.74344
+total_batch:  66    -0.0502178    1.48692
+total_batch:  67    -0.0371131    1.29103
+total_batch:  68    -0.0395989    1.34005
+total_batch:  69    -0.0411862    1.39341
+total_batch:  70    -0.0406015    1.39009
+total_batch:  70 test_loss:  7.02006
+Groud-Truth: 5.75325
+total_batch:  71    -0.0418528    1.39724
+total_batch:  72    -0.0436076    1.38301
+total_batch:  73    -0.0379975    1.38195
+total_batch:  74    -0.0480139    1.3805
+total_batch:  75    -0.0434777    1.40051
+total_batch:  75 test_loss:  7.01042
+Groud-Truth: 5.74453
+total_batch:  76    -0.0350107    1.33029
+total_batch:  77    -0.035438    1.39518
+total_batch:  78    -0.0354185    1.40636
+total_batch:  79    -0.0425667    1.39818
+total_batch:  80    -0.0332933    1.3926
+total_batch:  80 test_loss:  7.07472
+Groud-Truth: 5.75491
+total_batch:  81    -0.0500576    1.40246
+total_batch:  82    -0.0318528    1.36058
+total_batch:  83    -0.052383    1.35554
+total_batch:  84    -0.0392252    1.40638
+total_batch:  85    -0.0392072    1.3252
+total_batch:  85 test_loss:  7.01408
+Groud-Truth: 5.75238
+total_batch:  86    -0.0370223    1.38558
+total_batch:  87    -0.038433    1.46076
+total_batch:  88    -0.0341441    1.34835
+total_batch:  89    -0.0357629    1.31941
+total_batch:  90    -0.0339176    1.33506
+total_batch:  90 test_loss:  7.01058
+Groud-Truth: 5.75113
+total_batch:  91    -0.0315428    1.3102
 
 
