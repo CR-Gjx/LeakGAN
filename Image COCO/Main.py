@@ -12,7 +12,6 @@ flags = tf.app.flags
 FLAGS = flags.FLAGS
 flags.DEFINE_boolean('restore', False, 'Training or testing a model')
 flags.DEFINE_boolean('resD', False, 'Training or testing a D model')
-flags.DEFINE_integer('length', 20, 'The length of toy data')
 flags.DEFINE_string('model', "", 'Model NAME')
 #########################################################################################
 #  Generator  Hyper-parameters
@@ -256,7 +255,7 @@ def main():
                 print 'total_batch: ', total_batch, "  ",g_loss,"  ", w_loss
 
         # Test
-        if total_batch % 10 == 1 or total_batch == TOTAL_BATCH - 1:
+        if total_batch % 30 == 1 or total_batch == TOTAL_BATCH - 1:
             generate_samples(sess, leakgan, BATCH_SIZE, generated_num, "./save/coco_" + str(total_batch) + ".txt", 0)
             saver.save(sess, model_path + '/leakgan', global_step=total_batch)
         if total_batch % 15 == 0:
