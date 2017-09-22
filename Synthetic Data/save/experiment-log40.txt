@@ -1,0 +1,221 @@
+pre-train epoch  0 test_loss  12.3121
+Groud-Truth: 4.1202
+pre-train epoch  5 test_loss  11.4263
+Groud-Truth: 4.11584
+Start pre-training...
+pre-train epoch  0 test_loss  10.7503
+Groud-Truth: 4.12297
+pre-train epoch  5 test_loss  9.87385
+Groud-Truth: 4.12524
+Start pre-training...
+pre-train epoch  0 test_loss  9.60323
+Groud-Truth: 4.12056
+pre-train epoch  5 test_loss  9.36023
+Groud-Truth: 4.1184
+Start pre-training...
+pre-train epoch  0 test_loss  9.22843
+Groud-Truth: 4.11387
+pre-train epoch  5 test_loss  9.08053
+Groud-Truth: 4.12116
+Start pre-training...
+pre-train epoch  0 test_loss  9.01832
+Groud-Truth: 4.11623
+pre-train epoch  5 test_loss  8.93851
+Groud-Truth: 4.11845
+Start pre-training...
+pre-train epoch  0 test_loss  8.90636
+Groud-Truth: 4.11581
+pre-train epoch  5 test_loss  8.88839
+Groud-Truth: 4.12586
+Start pre-training...
+pre-train epoch  0 test_loss  8.89405
+Groud-Truth: 4.11975
+pre-train epoch  5 test_loss  8.89813
+Groud-Truth: 4.12354
+Start pre-training...
+pre-train epoch  0 test_loss  8.9083
+Groud-Truth: 4.11723
+pre-train epoch  5 test_loss  8.91757
+Groud-Truth: 4.1144
+Start pre-training...
+pre-train epoch  0 test_loss  8.94987
+Groud-Truth: 4.1129
+pre-train epoch  5 test_loss  8.97466
+Groud-Truth: 4.11918
+Start pre-training...
+pre-train epoch  0 test_loss  9.01648
+Groud-Truth: 4.11828
+pre-train epoch  5 test_loss  9.04779
+Groud-Truth: 4.11879
+#########################################################################
+Start Adversarial Training...
+total_batch:  0    -0.0643469    2.26412
+total_batch:  0 test_loss:  9.03634
+Groud-Truth: 4.12668
+total_batch:  1    -0.0628045    2.26212
+total_batch:  2    -0.0629434    2.21298
+total_batch:  3    -0.0585833    2.1702
+total_batch:  4    -0.0505337    2.09136
+total_batch:  5    -0.0488123    2.13219
+total_batch:  5 test_loss:  8.72065
+Groud-Truth: 4.11764
+total_batch:  6    -0.049069    2.16578
+total_batch:  7    -0.060847    2.12808
+total_batch:  8    -0.0471315    2.11017
+total_batch:  9    -0.0464129    2.00534
+total_batch:  10    -0.0382967    2.03944
+total_batch:  10 test_loss:  8.51311
+Groud-Truth: 4.12231
+total_batch:  11    -0.0434516    2.00504
+total_batch:  12    -0.0406848    1.96786
+total_batch:  13    -0.035412    1.94917
+total_batch:  14    -0.0405005    1.88763
+total_batch:  15    -0.0347386    1.9021
+total_batch:  15 test_loss:  8.19082
+Groud-Truth: 4.11849
+total_batch:  16    -0.032959    1.87842
+total_batch:  17    -0.0361637    1.82136
+total_batch:  18    -0.0320816    1.82216
+total_batch:  19    -0.0265045    1.85614
+total_batch:  20    -0.0333434    1.79766
+total_batch:  20 test_loss:  8.00374
+Groud-Truth: 4.11814
+total_batch:  21    -0.0341022    1.79483
+total_batch:  22    -0.0328714    1.82894
+total_batch:  23    -0.0336075    1.83448
+total_batch:  24    -0.0307809    1.7616
+total_batch:  25    -0.0293035    1.79337
+total_batch:  25 test_loss:  7.89991
+Groud-Truth: 4.11457
+total_batch:  26    -0.0330454    1.80268
+total_batch:  27    -0.0314286    1.76411
+total_batch:  28    -0.0336781    1.6845
+total_batch:  29    -0.0303032    1.74604
+total_batch:  30    -0.0348213    1.69302
+total_batch:  30 test_loss:  7.72645
+Groud-Truth: 4.12328
+total_batch:  31    -0.031947    1.69779
+total_batch:  32    -0.0327473    1.65377
+total_batch:  33    -0.0318169    1.6943
+total_batch:  34    -0.0354964    1.66725
+total_batch:  35    -0.0319148    1.60737
+total_batch:  35 test_loss:  7.60275
+Groud-Truth: 4.11947
+total_batch:  36    -0.0327814    1.6574
+total_batch:  37    -0.0334779    1.63445
+total_batch:  38    -0.0312545    1.61877
+total_batch:  39    -0.0302967    1.63284
+total_batch:  40    -0.0309616    1.65475
+total_batch:  40 test_loss:  7.60765
+Groud-Truth: 4.11825
+total_batch:  41    -0.0314937    1.60918
+total_batch:  42    -0.0319169    1.58496
+total_batch:  43    -0.0312952    1.60861
+total_batch:  44    -0.0302163    1.58007
+total_batch:  45    -0.0308142    1.50663
+total_batch:  45 test_loss:  7.45061
+Groud-Truth: 4.12033
+total_batch:  46    -0.0319573    1.54682
+total_batch:  47    -0.0317293    1.55779
+total_batch:  48    -0.0316184    1.5488
+total_batch:  49    -0.0306264    1.55344
+total_batch:  50    -0.0315612    1.52174
+total_batch:  50 test_loss:  7.45116
+Groud-Truth: 4.11521
+total_batch:  51    -0.0319889    1.52492
+total_batch:  52    -0.0301999    1.49744
+total_batch:  53    -0.028518    1.57562
+total_batch:  54    -0.0305118    1.49913
+total_batch:  55    -0.0301776    1.48522
+total_batch:  55 test_loss:  7.40835
+Groud-Truth: 4.11835
+total_batch:  56    -0.0323129    1.47572
+total_batch:  57    -0.0307418    1.50444
+total_batch:  58    -0.0305552    1.52729
+total_batch:  59    -0.0277246    1.53373
+total_batch:  60    -0.0275935    1.51216
+total_batch:  60 test_loss:  7.44048
+Groud-Truth: 4.12567
+total_batch:  61    -0.0264033    1.45091
+total_batch:  62    -0.032495    1.44484
+total_batch:  63    -0.032817    1.44194
+total_batch:  64    -0.029719    1.40559
+total_batch:  65    -0.0309448    1.4344
+total_batch:  65 test_loss:  7.34915
+Groud-Truth: 4.11921
+total_batch:  66    -0.0308188    1.43421
+total_batch:  67    -0.0323004    1.42891
+total_batch:  68    -0.0310223    1.41951
+total_batch:  69    -0.0303104    1.42268
+total_batch:  70    -0.027196    1.33494
+total_batch:  70 test_loss:  7.15306
+Groud-Truth: 4.11783
+total_batch:  71    -0.0277894    1.32747
+total_batch:  72    -0.0258892    1.33489
+total_batch:  73    -0.025135    1.3975
+total_batch:  74    -0.0255588    1.36658
+total_batch:  75    -0.0288323    1.3783
+total_batch:  75 test_loss:  7.24743
+Groud-Truth: 4.11238
+total_batch:  76    -0.0251644    1.45814
+total_batch:  77    -0.0303292    1.38358
+total_batch:  78    -0.030616    1.4451
+total_batch:  79    -0.0292346    1.42889
+total_batch:  80    -0.0302244    1.3242
+total_batch:  80 test_loss:  7.12519
+Groud-Truth: 4.1235
+total_batch:  81    -0.0270776    1.27848
+total_batch:  82    -0.0265077    1.33608
+total_batch:  83    -0.0259803    1.17291
+total_batch:  84    -0.0243614    1.18569
+total_batch:  85    -0.0284181    1.4173
+total_batch:  85 test_loss:  7.27912
+Groud-Truth: 4.12012
+total_batch:  86    -0.0273032    1.3962
+total_batch:  87    -0.0245831    1.36349
+total_batch:  88    -0.0245853    1.2653
+total_batch:  89    -0.0267497    1.25495
+total_batch:  90    -0.025692    1.26723
+total_batch:  90 test_loss:  7.01258
+Groud-Truth: 4.12678
+total_batch:  91    -0.0228254    1.25132
+total_batch:  92    -0.0209278    1.26945
+total_batch:  93    -0.0246709    1.28871
+total_batch:  94    -0.0211239    1.31204
+total_batch:  95    -0.0251122    1.37563
+total_batch:  95 test_loss:  7.11662
+Groud-Truth: 4.12679
+total_batch:  96    -0.0228    1.3167
+total_batch:  97    -0.0267758    1.37381
+total_batch:  98    -0.0223562    1.34458
+total_batch:  99    -0.0237433    1.36252
+total_batch:  100    -0.0253973    1.3404
+total_batch:  100 test_loss:  7.17267
+Groud-Truth: 4.11612
+total_batch:  101    -0.0227082    1.33224
+total_batch:  102    -0.0227808    1.39828
+total_batch:  103    -0.0245012    1.39854
+total_batch:  104    -0.0233914    1.41699
+total_batch:  105    -0.0233361    1.48271
+total_batch:  105 test_loss:  7.36301
+Groud-Truth: 4.1188
+total_batch:  106    -0.0303165    1.44002
+total_batch:  107    -0.0245218    1.4093
+total_batch:  108    -0.0256665    1.40055
+total_batch:  109    -0.0261531    1.4252
+total_batch:  110    -0.0273987    1.37825
+total_batch:  110 test_loss:  7.12892
+Groud-Truth: 4.11975
+total_batch:  111    -0.0276579    1.39739
+total_batch:  112    -0.0259469    1.36306
+total_batch:  113    -0.0243005    1.32088
+total_batch:  114    -0.0253583    1.29351
+total_batch:  115    -0.0244379    1.24957
+total_batch:  115 test_loss:  7.02134
+Groud-Truth: 4.11436
+total_batch:  116    -0.0248282    1.20866
+total_batch:  117    -0.0212819    1.20909
+total_batch:  118    -0.019343    1.20824
+total_batch:  119    -0.022628    1.30146
+total_batch:  120    -0.0273617    1.36884
+total_batch:  120 test_loss:  7.03147
