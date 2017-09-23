@@ -217,6 +217,12 @@ total_batch:  80 test_loss:  7.16439
 Groud-Truth: 4.18141
 total_batch:  81    -0.0276772    1.18596
 total_batch:  82    -0.0270498    1.22264
+total_batch:  83    -0.0235663    1.22959
+total_batch:  84    -0.0263103    1.23644
+total_batch:  85    -0.0256147    1.22403
+total_batch:  85 test_loss:  7.16217
+Groud-Truth: 4.18856
+
 ```
 
 #### Length 20:
