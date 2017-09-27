@@ -209,7 +209,6 @@ def main():
                 print 'Start pre-training...'
                 log.write('pre-training...\n')
                 for epoch in xrange(PRE_EPOCH_NUM):
-                    generate_samples(sess, target_lstm, BATCH_SIZE, generated_num, positive_file, 0)
                     loss = pre_train_epoch(sess, leakgan, gen_data_loader)
                     if epoch % 5 == 0:
                         generate_samples(sess, leakgan, BATCH_SIZE, generated_num, eval_file, 0)
@@ -253,7 +252,6 @@ def main():
                     print 'Start pre-training...'
                     log.write('pre-training...\n')
                     for epoch in xrange(PRE_EPOCH_NUM/10):
-                        generate_samples(sess, target_lstm, BATCH_SIZE, generated_num, positive_file,0)
                         loss = pre_train_epoch(sess, leakgan, gen_data_loader)
                         if epoch % 5 == 0:
                             generate_samples(sess, leakgan, BATCH_SIZE, generated_num, eval_file,0)
