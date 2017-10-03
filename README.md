@@ -1,5 +1,5 @@
-# LeakGAN
-The code of research paper [Long Text Generation via Adversarial Training with Leaked Information](https://arxiv.org/abs/1709.08624).
+﻿# LeakGAN
+The code of research paper [Long Text Generation via Adversarial Training with Leaked Information](https://arxiv.org/abs/1709.08624). 
 ## Requirements
 * **Tensorflow r1.2.1**
 * Python 2.7
