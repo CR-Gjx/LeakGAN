@@ -167,7 +167,7 @@ def main():
     likelihood_data_loader = Gen_Data_loader(BATCH_SIZE,FLAGS.length) # For testing
     vocab_size = 5000
     file = open('save/target_params.pkl', 'rb')
-    target_params = cPickle.load(file.decode('utf-8'))
+    target_params = cPickle.load(file)
     
     dis_data_loader = Dis_dataloader(BATCH_SIZE,SEQ_LENGTH)
     discriminator = Discriminator(SEQ_LENGTH,num_classes=2,vocab_size=vocab_size,dis_emb_dim=dis_embedding_dim,filter_sizes=dis_filter_sizes,num_filters=dis_num_filters,
