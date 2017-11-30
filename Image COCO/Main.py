@@ -4,7 +4,7 @@ import random
 from dataloader import Gen_Data_loader, Dis_dataloader
 from Discriminator import Discriminator
 from LeakGANModel import  LeakGAN
-import cPickle
+import pickle
 import os
 #import numexpr as ne
 
@@ -67,7 +67,7 @@ def target_loss(sess, target_lstm, data_loader):
     entro = []
     data_loader.reset_pointer()
 
-    for it in xrange(data_loader.num_batch):
+    for it in range(data_loader.num_batch):
         batch = data_loader.next_batch()
         g_loss,entropy = sess.run([target_lstm.pretrain_loss,target_lstm.cross_entropy], {target_lstm.x: batch})
         nll.append(g_loss)
@@ -79,7 +79,7 @@ def pre_train_epoch(sess, trainable_model, data_loader):
     supervised_g_losses = []
     data_loader.reset_pointer()
 
-    for it in xrange(data_loader.num_batch/20):
+    for it in range(data_loader.num_batch/20):
         batch = data_loader.next_batch()
         _, g_loss,_,_ = trainable_model.pretrain_step(sess, batch,1.0)
         supervised_g_losses.append(g_loss)
@@ -168,9 +168,9 @@ def main():
     sess.run(tf.global_variables_initializer())
     for a in range(1):
         g = sess.run(leakgan.gen_x,feed_dict={leakgan.drop_out:0.8,leakgan.train:1})
-        print g
+        print(g)
 
-        print "epoch:",a,"  "
+        print("epoch:",a,"  ")
 
     log = open('save/experiment-log.txt', 'w')
     generate_samples(sess, leakgan, BATCH_SIZE, generated_num, negative_file, 0)
@@ -178,23 +178,23 @@ def main():
     saver_variables = tf.global_variables()
     saver = tf.train.Saver(saver_variables)
     model = tf.train.latest_checkpoint(model_path)
-    print  model
+    print(model)
     if FLAGS.restore and model:
         # model = tf.train.latest_checkpoint(model_path)
         # if model and FLAGS.restore:
         if model_path+'/' + FLAGS.model:
-            print model_path+'/' + FLAGS.model
+            print(model_path+'/' + FLAGS.model)
             saver.restore(sess, model_path+'/' + FLAGS.model)
         else:
             saver.restore(sess, model)
     else:
         if FLAGS.resD and model_path + '/' + FLAGS.model:
-                print model_path + '/' + FLAGS.model
+                print(model_path + '/' + FLAGS.model)
                 saver.restore(sess, model_path + '/' + FLAGS.model)
 
-                print 'Start pre-training...'
+                print('Start pre-training...')
                 log.write('pre-training...\n')
-                for epoch in xrange(PRE_EPOCH_NUM):
+                for epoch in range(PRE_EPOCH_NUM):
                     loss = pre_train_epoch(sess, leakgan, gen_data_loader)
                     if epoch % 5 == 0:
                         generate_samples(sess, leakgan, BATCH_SIZE, generated_num, negative_file)
@@ -202,7 +202,7 @@ def main():
                     log.write(buffer)
                 saver.save(sess, model_path + '/leakgan_pre')
         else:
-                print 'Start pre-training discriminator...'
+                print('Start pre-training discriminator...')
                 # Train 3 epoch on the generated data and do this for 50 times
                 for i in range(10):
                     for _ in range(5):
@@ -211,7 +211,7 @@ def main():
                         dis_data_loader.load_train_data(positive_file, negative_file)
                         for _ in range(3):
                             dis_data_loader.reset_pointer()
-                            for it in xrange(dis_data_loader.num_batch):
+                            for it in range(dis_data_loader.num_batch):
                                 x_batch, y_batch = dis_data_loader.next_batch()
                                 feed = {
                                     discriminator.D_input_x: x_batch,
@@ -227,21 +227,21 @@ def main():
 
             # saver.save(sess, model_path + '/leakgan')
         #  pre-train generator
-                    print 'Start pre-training...'
+                    print('Start pre-training...')
                     log.write('pre-training...\n')
-                    for epoch in xrange(PRE_EPOCH_NUM/10):
+                    for epoch in range(PRE_EPOCH_NUM/10):
                         loss = pre_train_epoch(sess, leakgan, gen_data_loader)
                         if epoch % 5 == 0:
                             generate_samples(sess, leakgan, BATCH_SIZE, generated_num, negative_file,0)
-                        print 'pre-train epoch ', epoch, 'test_loss ', loss
+                        print('pre-train epoch ', epoch, 'test_loss ', loss)
                         buffer = 'epoch:\t'+ str(epoch) + '\tnll:\t' + str(loss) + '\n'
                         log.write(buffer)
                 saver.save(sess, model_path + '/leakgan_pre')
 
     gencircle = 1
     #
-    print '#########################################################################'
-    print 'Start Adversarial Training...'
+    print('#########################################################################')
+    print('Start Adversarial Training...')
     log.write('adversarial training...\n')
     for total_batch in range(TOTAL_BATCH):
         # Train the generator for one step
@@ -252,14 +252,14 @@ def main():
                 rewards = get_reward(leakgan, discriminator,sess, samples, 4, dis_dropout_keep_prob,total_batch,gen_data_loader)
                 feed = {leakgan.x: samples, leakgan.reward: rewards,leakgan.drop_out:1.0}
                 _,_,g_loss,w_loss = sess.run([leakgan.manager_updates,leakgan.worker_updates,leakgan.goal_loss,leakgan.worker_loss], feed_dict=feed)
-                print 'total_batch: ', total_batch, "  ",g_loss,"  ", w_loss
+                print('total_batch: ', total_batch, "  ",g_loss,"  ", w_loss)
 
         # Test
         if total_batch % 30 == 1 or total_batch == TOTAL_BATCH - 1:
             generate_samples(sess, leakgan, BATCH_SIZE, generated_num, "./save/coco_" + str(total_batch) + ".txt", 0)
             saver.save(sess, model_path + '/leakgan', global_step=total_batch)
         if total_batch % 15 == 0:
-             for epoch in xrange(1):
+             for epoch in range(1):
                  loss = pre_train_epoch(sess, leakgan, gen_data_loader)
         # Train the discriminator
         for _ in range(5):
@@ -268,7 +268,7 @@ def main():
 
             for _ in range(3):
                 dis_data_loader.reset_pointer()
-                for it in xrange(dis_data_loader.num_batch):
+                for it in range(dis_data_loader.num_batch):
                     x_batch, y_batch = dis_data_loader.next_batch()
                     feed = {
                         discriminator.D_input_x: x_batch,
