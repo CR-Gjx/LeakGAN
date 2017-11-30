@@ -20,7 +20,7 @@ EMB_DIM = 128 # embedding dimension
 HIDDEN_DIM = 128 # hidden state dimension of lstm cell
 SEQ_LENGTH = 32 # sequence length
 START_TOKEN = 0
-PRE_EPOCH_NUM = 150 # supervise (maximum likelihood estimation) epochs
+PRE_EPOCH_NUM = 200 # supervise (maximum likelihood estimation) epochs
 SEED = 88
 BATCH_SIZE = 64
 
@@ -204,7 +204,7 @@ def main():
         else:
                 print 'Start pre-training discriminator...'
                 # Train 3 epoch on the generated data and do this for 50 times
-                for i in range(10):
+                for i in range(16):
                     for _ in range(5):
                         generate_samples(sess, leakgan, BATCH_SIZE, generated_num, negative_file,0)
                         # gen_data_loader.create_batches(positive_file)
@@ -229,7 +229,7 @@ def main():
         #  pre-train generator
                     print 'Start pre-training...'
                     log.write('pre-training...\n')
-                    for epoch in xrange(PRE_EPOCH_NUM/10):
+                    for epoch in xrange(PRE_EPOCH_NUM/16):
                         loss = pre_train_epoch(sess, leakgan, gen_data_loader)
                         if epoch % 5 == 0:
                             generate_samples(sess, leakgan, BATCH_SIZE, generated_num, negative_file,0)
@@ -255,7 +255,7 @@ def main():
                 print 'total_batch: ', total_batch, "  ",g_loss,"  ", w_loss
 
         # Test
-        if total_batch % 30 == 1 or total_batch == TOTAL_BATCH - 1:
+        if total_batch % 10 == 1 or total_batch == TOTAL_BATCH - 1:
             generate_samples(sess, leakgan, BATCH_SIZE, generated_num, "./save/coco_" + str(total_batch) + ".txt", 0)
             saver.save(sess, model_path + '/leakgan', global_step=total_batch)
         if total_batch % 15 == 0:

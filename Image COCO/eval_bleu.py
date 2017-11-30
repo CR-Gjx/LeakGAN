@@ -13,16 +13,20 @@ pad = vocab[' ']
 print pad
 
 reference_file = 'save/realtest_coco.txt'
-hypothesis_file_leakgan = 'save/coco_571.txt'
-
+hypothesis_file_leakgan = 'save/generator_sample.txt'
+# hypothesis_file_leakgan = 'save/coco_451.txt'
 #################################################
 reference = []
 with open(reference_file)as fin:
     for line in fin:
+        candidate = []
         line = line.split()
-        while line[-1] == str(pad):
-            line.remove(str(pad))
-        reference.append(line)
+        for i in line:
+            if i == str(pad):
+                break
+            candidate.append(i)
+
+        reference.append(candidate)
 #################################################
 hypothesis_list_leakgan = []
 with open(hypothesis_file_leakgan) as fin:
