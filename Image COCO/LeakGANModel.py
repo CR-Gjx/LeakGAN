@@ -230,8 +230,8 @@ class LeakGAN(object):
 
         self.real_goal_array = self.real_goal_array.stack()
         self.real_goal_array = tf.transpose(self.real_goal_array, perm=[1, 0, 2])
-        print(self.real_goal_array.shape)
-        print(self.sub_feature.shape)
+        print self.real_goal_array.shape
+        print self.sub_feature.shape
         self.pretrain_goal_loss = -tf.reduce_sum(1-tf.losses.cosine_distance(tf.nn.l2_normalize(self.sub_feature,2),tf.nn.l2_normalize(self.real_goal_array,2),2)
         ) / (self.sequence_length * self.batch_size/self.step_size)
 
@@ -239,7 +239,7 @@ class LeakGAN(object):
             pretrain_manager_opt = tf.train.AdamOptimizer(self.learning_rate)
 
             self.pretrain_manager_grad, _ = tf.clip_by_global_norm(tf.gradients(self.pretrain_goal_loss, self.manager_params), self.grad_clip)
-            self.pretrain_manager_updates = pretrain_manager_opt.apply_gradients(list(zip(self.pretrain_manager_grad, self.manager_params)))
+            self.pretrain_manager_updates = pretrain_manager_opt.apply_gradients(zip(self.pretrain_manager_grad, self.manager_params))
         # self.real_goal_array = self.real_goal_array.stack()
 
         self.g_predictions = tf.transpose(self.g_predictions.stack(), perm=[1, 0, 2])  # batch_size x seq_length x vocab_size
@@ -257,7 +257,7 @@ class LeakGAN(object):
             pretrain_worker_opt = tf.train.AdamOptimizer(self.learning_rate)
 
             self.pretrain_worker_grad, _ = tf.clip_by_global_norm(tf.gradients(self.pretrain_worker_loss, self.worker_params), self.grad_clip)
-            self.pretrain_worker_updates = pretrain_worker_opt.apply_gradients(list(zip(self.pretrain_worker_grad, self.worker_params)))
+            self.pretrain_worker_updates = pretrain_worker_opt.apply_gradients(zip(self.pretrain_worker_grad, self.worker_params))
 
         self.goal_loss = -tf.reduce_sum(tf.multiply(self.reward,1-tf.losses.cosine_distance(tf.nn.l2_normalize(self.sub_feature,2), tf.nn.l2_normalize(self.real_goal_array,2), 2)
                                                  )) / (self.sequence_length * self.batch_size / self.step_size)
@@ -268,7 +268,7 @@ class LeakGAN(object):
             self.manager_grad, _ = tf.clip_by_global_norm(
                 tf.gradients(self.goal_loss, self.manager_params), self.grad_clip)
             self.manager_updates = manager_opt.apply_gradients(
-                list(zip(self.manager_grad, self.manager_params)))
+                zip(self.manager_grad, self.manager_params))
 
 
         self.all_sub_features = self.all_sub_features.stack()
@@ -290,7 +290,7 @@ class LeakGAN(object):
             self.worker_grad, _ = tf.clip_by_global_norm(
                 tf.gradients(self.worker_loss, self.worker_params), self.grad_clip)
             self.worker_updates = worker_opt.apply_gradients(
-                list(zip(self.worker_grad, self.worker_params)))
+                zip(self.worker_grad, self.worker_params))
 
     def rollout(self,input_x,given_num):
         with tf.device("/cpu:0"):

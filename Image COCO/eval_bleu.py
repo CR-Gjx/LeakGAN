@@ -1,16 +1,16 @@
 import nltk
 import random
 from scipy import stats
-import pickle
+import cPickle
 
 
 data_Name = "cotra"
 vocab_file = "vocab_" + data_Name + ".pkl"
 
-word, vocab = pickle.load(open('save/'+vocab_file))
+word, vocab = cPickle.load(open('save/'+vocab_file))
 
 pad = vocab[' ']
-print(pad)
+print pad
 
 reference_file = 'save/realtest_coco.txt'
 hypothesis_file_leakgan = 'save/coco_571.txt'
@@ -48,6 +48,6 @@ for ngram in range(2,6):
         num += 1
         bleu_leakgan.append(BLEUscore)
     print ('leakgan')
-    print((len(weight), '-gram BLEU score : ', 1.0 * sum(bleu_leakgan) / len(bleu_leakgan)))
+    print(len(weight), '-gram BLEU score : ', 1.0 * sum(bleu_leakgan) / len(bleu_leakgan))
 
-pickle.dump([hypothesis_list_leakgan], open('save/significance_test_sample.pkl', 'w'))
+cPickle.dump([hypothesis_list_leakgan], open('save/significance_test_sample.pkl', 'w'))
