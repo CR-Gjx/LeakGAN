@@ -1,5 +1,6 @@
 ﻿# LeakGAN
 The code of research paper [Long Text Generation via Adversarial Training with Leaked Information](https://arxiv.org/abs/1709.08624). 
+
 This paper has been accepted at the Thirty-Second AAAI Conference on Artificial Intelligence (AAAI-18).
 ## Requirements
 * **Tensorflow r1.2.1**
