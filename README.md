@@ -24,3 +24,13 @@ Synthetic Data: synthetic data experiment
 Image COCO: a real text example for our model using dataset Image COCO (http://cocodataset.org/#download)
 
 Note: this code is based on the [previous work by LantaoYu](https://github.com/LantaoYu/SeqGAN). Many thanks to [LantaoYu](https://github.com/LantaoYu).
+
+## Reference
+```bash
+@article{guo2017long,
+  title={Long Text Generation via Adversarial Training with Leaked Information},
+  author={Guo, Jiaxian and Lu, Sidi and Cai, Han and Zhang, Weinan and Yu, Yong and Wang, Jun},
+  journal={arXiv preprint arXiv:1709.08624},
+  year={2017}
+}
+```
