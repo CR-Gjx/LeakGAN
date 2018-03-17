@@ -1,0 +1,2 @@
+model_checkpoint_path: "feugan_preD"
+all_model_checkpoint_paths: "feugan_preD"
