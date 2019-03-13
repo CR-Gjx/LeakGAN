@@ -338,7 +338,7 @@ class LeakGAN(object):
                            lambda: tf.constant(0.0, shape=[self.batch_size, self.goal_out_size])), \
                    tf.cond(((i) % self.step_size) > 0, lambda: real_goal, lambda: real_sub_goal), give_num
 
-        # When current index i >= given_num, start roll-out, use the output as time step t as the input at time step t+1
+        # When current index i >= given_num, start roll-out, use the output at time step t as the input at time step t+1
         def _g_recurrence_2(i, x_t,gen_x,h_tm1,h_tm1_manager,last_goal,real_goal):
             # with tf.device('/cpu:0'):
             cur_sen = tf.cond(i > 0,lambda:tf.split(tf.concat([tf.transpose(gen_x.stack(), perm=[1, 0]),self.padding_array],1),[self.sequence_length,i-1],1)[0],lambda :self.padding_array)
