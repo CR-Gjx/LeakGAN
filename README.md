@@ -34,4 +34,4 @@ Synthetic Data: synthetic data experiment
 
 Image COCO: a real text example for our model using dataset Image COCO (http://cocodataset.org/#download)
 
-Note: this code is based on the [previous work by Kimin Lee and Younggyo Seo](https://github.com/younggyoseo/trajectory_mcl). Many thanks to [Kimin Lee and Younggyo Seo](https://github.com/younggyoseo/).
+Note: this code is based on the [previous work by LantaoYu](https://github.com/LantaoYu/SeqGAN). Many thanks to [LantaoYu](https://github.com/LantaoYu).
